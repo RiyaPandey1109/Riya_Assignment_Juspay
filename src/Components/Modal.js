@@ -9,8 +9,8 @@ const Modal = ({ handleCloseModal }) => {
           <li>Drag and drop your moves from the available moves list.</li>
           <li>Each move can be placed in either Action 1 or Action 2 box.</li>
           <li>Complete the game by organizing all moves in proper order.</li>
-          <li>Moves in Action 1 will impact sipirt1</li>
-          <li>Moves in Action 2 will impact sipirt2</li>
+          <li>Moves in Action 1 will impact Sprite1</li>
+          <li>Moves in Action 2 will impact Sprite2</li>
         </ul>
         <button
           className="absolute top-2 right-2 text-gray-600 hover:text-black text-xl"
