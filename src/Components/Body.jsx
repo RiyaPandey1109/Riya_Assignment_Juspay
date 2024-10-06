@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { SingleAction } from "./singleAction";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Box, Button } from "@mui/material";
+import {  Droppable } from "react-beautiful-dnd";
+import { Button } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import DeleteIcon from "@mui/icons-material/Delete";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { Sprites } from "./spriteProps";
 import Positions from "./positons";
 import Draggable1 from "react-draggable";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { WARN_MSG_POS, WARN_MSG_SIZE } from "../constants";
+import { WARN_MSG_POS } from "../constants";
 
 export const Body = (props) => {
   const { moves, setMoves, actions, setActions, setActions2, actions2 } = props;
@@ -30,7 +28,7 @@ export const Body = (props) => {
   let angle2 = 0;
 
   const [hello, setHello] = React.useState(false);
-  const [hello2, setHello2] = React.useState(false);
+  const [hello2] = React.useState(false);
   const [displayAddIcon, setDisplayAddIcon] = React.useState(true);
   const [sprite, setSprite] = React.useState(
     require("../Assets/images/cat.png")
@@ -107,18 +105,7 @@ export const Body = (props) => {
     }, i * 1500);
   }
 
-  function sayHello(i, action1) {
-    setTimeout(() => {
-      action1 ? setHello(true) : setHello2(true);
-    }, i * 1500);
-    closeHello(i, action1);
-  }
 
-  function closeHello(i, action1) {
-    setTimeout(() => {
-      action1 ? setHello(false) : setHello2(false);
-    }, i * 1500 + 1000);
-  }
 
   function moveXY(xInput, yInput, random, i, action1) {
     setTimeout(() => {
@@ -170,58 +157,6 @@ export const Body = (props) => {
         : (ref2.current.style.transform = `scale(${scale2})translate(${r2}, ${t2}) rotate(${angle2}deg)`);
     }, i * 1500);
   };
-
-  function handleScale(size, increase, idx, action1) {
-    if (size === "medium") {
-      scale = 2;
-      ref.current.style.transform = `scale(2) translate(${r}, ${t}) rotate(${angle}deg)`;
-      return;
-    } else if (size === "large") {
-      ref.current.style.transform = `scale(3) translate(${r}, ${t}) rotate(${angle}deg)`;
-      scale = 3;
-      return;
-    } else if (size === "small") {
-      ref.current.style.transform = `scale(1) translate(${r}, ${t}) rotate(${angle}deg)`;
-      scale = 1;
-      return;
-    } else if (increase) {
-      setTimeout(() => {
-        action1 ? (scale += 0.2) : (scale2 += 0.2);
-        if (action1) {
-          if (scale < 3) {
-            ref.current.style.transform = `scale(${scale})translate(${r}, ${t}) rotate(${angle}deg)`;
-          } else {
-            refresh(WARN_MSG_SIZE);
-          }
-        } else {
-          if (scale2 < 3) {
-            ref2.current.style.transform = `scale(${scale2})translate(${r2}, ${t2}) rotate(${angle2}deg)`;
-          } else {
-            refresh(WARN_MSG_SIZE);
-          }
-        }
-      }, idx * 1500);
-      return;
-    } else {
-      setTimeout(() => {
-        action1 ? (scale -= 0.2) : (scale2 -= 0.2);
-        if (action1) {
-          if (scale > 0.5) {
-            ref.current.style.transform = `scale(${scale})translate(${r}, ${t}) rotate(${angle}deg)`;
-          } else {
-            refresh(WARN_MSG_SIZE);
-          }
-        } else {
-          if (scale2 > 0.5) {
-            ref2.current.style.transform = `scale(${scale2})translate(${r2}, ${t2}) rotate(${angle2}deg)`;
-          } else {
-            refresh(WARN_MSG_SIZE);
-          }
-        }
-      }, idx * 1500);
-      return;
-    }
-  }
 
   const startActions = (action, idx, action1) => {
     switch (action) {
@@ -320,16 +255,6 @@ export const Body = (props) => {
 
   const toggleHeroControl = () => {
     setIsHeroControlOpen(!isHeroControlOpen);
-  };
-
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-
-    const items = Array.from(actions);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    setActions(items);
   };
 
   return (

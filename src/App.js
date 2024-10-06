@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Body } from "./Components/Body";
 import { DragDropContext } from "react-beautiful-dnd";
 import { MOVES } from "./constants";

@@ -1,10 +1,9 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import "./styles.css";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import { Box, Button, TextField } from "@mui/material";
 
 export const Positions = (props) => {
-  const { handleMove, refresh } = props;
+  const { handleMove } = props;
   const [xInput, setXInput] = React.useState("");
   const [yInput, setYInput] = React.useState("");
 
@@ -12,11 +11,6 @@ export const Positions = (props) => {
     handleMove(xInput, yInput, false, 0, true);
   };
 
-  function clear() {
-    setXInput("");
-    setYInput("");
-    refresh();
-  }
   return (
     <Box
       className="spriteContainer"
