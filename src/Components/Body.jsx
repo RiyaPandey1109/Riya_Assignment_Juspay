@@ -273,7 +273,7 @@ export const Body = (props) => {
                 style={{ backgroundColor: "red", cursor: "pointer" }}
                 onClick={toggleHeroControl}
               >
-                Hero Control
+                Controls
               </div>
               {isHeroControlOpen && (
                 <>
