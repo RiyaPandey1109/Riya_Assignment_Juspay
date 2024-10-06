@@ -22,10 +22,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "CI=false react-scripts start",
-    "build": "CI=false react-scripts build",
-    "test": "CI=false react-scripts test",
-    "eject": "CI=false react-scripts eject"
+    "start": "cross-env CI=false react-scripts start",
+    "build": "cross-env CI=false react-scripts build",
+    "test": "cross-env CI=false react-scripts test",
+    "eject": "cross-env CI=false react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "x.x.x"
+    "@babel/plugin-proposal-private-property-in-object": "x.x.x",
+    "cross-env": "^7.0.3"
   }
 }
