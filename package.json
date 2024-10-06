@@ -26,7 +26,6 @@
     "build": "CI=false react-scripts build",
     "test": "CI=false react-scripts test",
     "eject": "CI=false react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "x.x.x"
   }
 }
