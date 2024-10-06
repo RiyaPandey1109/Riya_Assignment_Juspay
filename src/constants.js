@@ -35,6 +35,11 @@ export const MOVES = [
     id: 12,
     todo: "Rotate At 180°",
   },
+  {
+    id: 15,
+    todo: "Replay",
+  },
+
 ];
 
 export const WARN_MSG_SIZE = "Size out of bounds";

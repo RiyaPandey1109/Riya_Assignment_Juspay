@@ -35,8 +35,6 @@ export const Body = (props) => {
   );
   const [sprite2, setSprite2] = React.useState(null);
 
-  console.log("rendering...");
-
   function transform(temp, xAxis, action1) {
     let value = temp.toString();
     if (xAxis) {
@@ -196,6 +194,17 @@ export const Body = (props) => {
         rotate(360, idx, action1);
         break;
       }
+      case "Replay": {
+        setTimeout(() => {
+          if (action1) {
+            runAction1();
+          } else {
+            runAction2();
+          }
+        }, idx * 1500);
+        break;
+      }
+
       default:
         break;
     }
@@ -291,11 +300,11 @@ export const Body = (props) => {
                     className="moves__heading"
                     style={{ marginTop: "20px", backgroundColor: "orange" }}
                   >
-                    Cordinates Moves
+                    Rotate Moves
                   </div>
 
                   {moves
-                    ?.filter((move) => [6, 9, 10, 11, 12].includes(move.id))
+                    ?.filter((move) => [6, 9, 10, 11, 12,15].includes(move.id))
                     .map((move, index) => (
                       <SingleAction
                         disableDelete={true}
@@ -324,7 +333,7 @@ export const Body = (props) => {
                 className="moves__heading"
                 style={{ backgroundColor: "green" }}
               >
-                Pay Bar 1
+                Play Box 1
               </span>
               {actions?.map((move, index) => (
                 <SingleAction
@@ -389,7 +398,7 @@ export const Body = (props) => {
                   className="moves__heading"
                   style={{ backgroundColor: "green" }}
                 >
-                  Play Bar 2
+                  Play Box 2
                 </span>
                 {actions2?.map((move, index) => (
                   <SingleAction
